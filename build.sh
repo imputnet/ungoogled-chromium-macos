@@ -41,9 +41,6 @@ while getopts 'd' OPTION; do
   esac
 done
 
-# Add local clang and build tools to PATH
-# export PATH="$PATH:$_src_dir/third_party/llvm-build/Release+Asserts/bin"
-
 rm -rf "$_src_dir/out" || true
 mkdir -p "$_download_cache"
 
@@ -75,7 +72,6 @@ else
   echo 'target_cpu = "x64"' >> "$_src_dir/out/Default/args.gn"
 fi
 
-mkdir -p "$_src_dir/third_party/llvm-build/Release+Asserts"
 mkdir -p "$_src_dir/third_party/rust-toolchain/bin"
 
 /usr/bin/arch -$_arch /bin/zsh "$_root_dir/retrieve_and_unpack_resource.sh" -p

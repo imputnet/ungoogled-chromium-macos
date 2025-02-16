@@ -50,7 +50,6 @@ while getopts 'dgp' OPTION; do
     p)
         rm -rf "$_src_dir/third_party/llvm-build/Release+Asserts/"
         rm -rf "$_src_dir/third_party/rust-toolchain/bin/"
-        mkdir -p "$_src_dir/third_party/llvm-build/Release+Asserts"
 
         # Retrieve and unpack platform-specific resources
         if [[ $_target_cpu == "arm64" ]]; then
@@ -87,10 +86,6 @@ while getopts 'dgp' OPTION; do
         ln -s "$_rust_dir/cargo/bin/cargo" "$_rust_bin_dir/cargo"
         ln -s "$_rust_lib_dir" "$_rustc_lib_dir"
 
-        _llvm_dir="$_src_dir/third_party/llvm-build/Release+Asserts"
-        _llvm_bin_dir="$_llvm_dir/bin"
-
-        ln -s "$_llvm_bin_dir/llvm-install-name-tool" "$_llvm_bin_dir/install_name_tool"
         ;;
     ?)
         echo "Usage: $0 [-d] [-g] [-p]"
